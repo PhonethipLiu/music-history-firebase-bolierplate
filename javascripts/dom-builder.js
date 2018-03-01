@@ -1,8 +1,9 @@
 "use strict";
 // This module only cares about the data it receives. It doesn't have to know about where the data comes from.
 
-let $ = require('jquery');
+let $ = require('jquery'); // because it is an option in browserifyOptions it will go in the "./node_modules" to find the jquery module to use; you just have to requrie it here to work
 
+//PH === building the songlist template to print to dom
 function makeSongList(songList) {
   let $songsDisplay =
   $(`<div class="uiContainer__song-list box col s12">
@@ -29,6 +30,7 @@ function makeSongList(songList) {
   }
 }
 
+//PH === songForm Promises 
 function songForm(song, songId) {
   return new Promise(function (resolve, reject) {
     let songItem = {
@@ -40,6 +42,7 @@ function songForm(song, songId) {
       btnText: song ? "save changes" : "save song",
       btnId: song ? "save_edit_btn" : "save_new_btn"
     },
+    // PH === resolve is the form and populate the form
     form =
       `<h3>${songItem.formTitle}</h3>
       <input type="text" id="form--title" placeholder="title" value="${songItem.title}"></input>
